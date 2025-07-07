@@ -2,11 +2,26 @@
 int main()
 {
 	FILE *file;
-	char data[20];
+	char data[256];
 	file=fopen("example.txt","r");
+	//file=fopen("example.txt","w");
+	//file=fopen("example.txt","a");
 	if(file!=NULL)
 	{
-		fgets(data,100,file);
-		printf("%s",data);
-	}
+		//fgets read line at a time
+//		while(fgets(data,sizeof(data),file)!=NULL)
+//			{
+//			
+//			printf("%s",data);
+//	
+//	}
+		int ch;
+		while(ch!=EOF)
+		{	
+			ch=fgetc(file);
+			printf("%c",ch);
+		}
+		
+
+		}
 }
