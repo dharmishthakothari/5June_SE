@@ -1,0 +1,30 @@
+-- create table orders(oid int primary key auto_increment , itemname varchar(20))
+/* This is for multline comment */
+/*create table customers(cid int primary key,customername varchar(20),
+address varchar(50),oid int ,
+foreign key (oid) references orders(oid));*/
+
+-- insert into orders values(11,'Mobile'),
+-- (22,'Laptop'),
+-- (33,'Mouse'),
+-- (44,'LED'),
+-- (55,'Speaker')
+
+-- insert into customers values(101,'Rohit','Ranip',22),
+-- (201,'Ronit','Bopal',55),
+-- (411,'Ramesh','S G Highway',44),
+-- (501,'Rina','Parimal',33),
+-- (555,'Reena','Bopal',22),
+-- (203,'Ram','Sabarmati',55),
+-- (901,'Rekha','Ranip',44),
+-- (1001,'Ashok','Bapunagar',22),
+-- (304,'Dia','C G Road',44),
+-- (331,'Ronak','Sabaramati',55),
+-- (560,'Shivam','C G Road',22),
+-- (401,'Manahar','Ranip',33)
+
+select * from orders
+
+
+
+
