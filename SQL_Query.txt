@@ -25,6 +25,70 @@ foreign key (oid) references orders(oid));*/
 
 select * from orders
 
+__________________________________________
+
+select address,customername from customers
+
+__________________________________________
+
+select address,customername from customers where address="Ranip"
+
+___________________________________
+
+select * from customers where address="ranip" and oid=22
+
+_______________________________
+
+select * from customers where address="ranip" or oid=22
+
+_______________________________
+
+select * from customers where address in("ranip","bapunagar","Sg highway")
+
+_______________________________
+
+select * from customers where oid between 30 and 50
+
+_______________________________
+
+select * from customers order by customername
+
+_______________________________
+
+select * from customers order by customername desc
+
+_______________________________
+select * from customers order by customername,oid
+
+_______________________________
+
+select * from customers order by customername,oid limit 2
+
+_______________________________
+
+select * from customers where customername like '%a'
+
+____________________________________________________
+
+select * from customers where customername like 'r____'
+
+___________________________________________________________
 
 
+select cid,customername , itemname from customers,orders
+where customers.oid=orders.oid
 
+___________________________________________________________
+
+select cid,customername,itemname from customers inner join orders 
+on customers.oid=orders.oid
+
+___________________________________________________________
+
+select cid,customername,itemname from customers left join orders 
+on customers.oid=orders.oid
+
+
+___________________________________________________________
+
+joins , clause (where ,between , in ,order by,like,or-and)inheritance 
