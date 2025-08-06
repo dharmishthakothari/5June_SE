@@ -92,3 +92,28 @@ on customers.oid=orders.oid
 ___________________________________________________________
 
 joins , clause (where ,between , in ,order by,like,or-and)inheritance 
+
+___________________________________________________________
+
+
+select cid,customername,itemname as product_name from orders,customers where customers.oid=orders.oid
+
+___________________________________________________________
+
+alter table customers add  qty int
+___________________________________________________________
+aggregate function
+sum,avg,min,max,count
+
+___________________________________________________________
+
+select itemname,sum(qty) from orders,customers where customers.oid=orders.oid group by itemname
+
+___________________________________________________________
+
+select itemname,sum(qty) from orders,customers where customers.oid=orders.oid group by itemname having sum(qty)>400
+
+___________________________________________________________
+
+select itemname,count(qty) from orders,customers where customers.oid=orders.oid group by itemname
+s
