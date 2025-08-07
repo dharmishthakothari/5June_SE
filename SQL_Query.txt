@@ -117,3 +117,50 @@ ___________________________________________________________
 
 select itemname,count(qty) from orders,customers where customers.oid=orders.oid group by itemname
 s
+
+___________________________________________________________
+
+
+DELIMITER //
+ 
+create procedure viewAllcustomers()
+begin
+select * from customers;
+end // 
+
+call viewAllcustomers()
+
+___________________________________________________________
+
+DELIMITER //
+ 
+create procedure viewAllcustomersWithAddress(
+in address1 varchar(20)
+
+)
+begin
+select * from customers where address=address1;
+end // 
+
+
+call viewAllcustomersWithAddress('c g road')
+
+___________________________________________________________
+
+DELIMITER //
+ DROP PROCEDURE IF EXISTS viewAllcustomersWithAddress; //
+
+create procedure viewAllcustomersWithAddress(
+in address1 varchar(20),
+out total_cust int
+
+)
+begin
+select count(*) into total_cust from customers where address=address1;
+end // 
+
+
+call viewAllcustomersWithAddress('c g road',@cust);
+select @cust;
+
+
