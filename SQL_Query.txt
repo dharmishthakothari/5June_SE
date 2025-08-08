@@ -163,4 +163,23 @@ end //
 call viewAllcustomersWithAddress('c g road',@cust);
 select @cust;
 
+___________________________________________________________
 
+View 
+
+/*create view view_custumer_withItemName as 
+select customername,qty,itemname from customers,orders 
+where customers.oid=orders.oid*/
+
+-- select * from view_custumer_withitemname
+-- drop view view_custumer_withitemname;
+
+________________________________________________________
+
+
+ delimiter //
+ create trigger qty_update1 after update on 
+ customers for each row 
+     begin
+      update customers set qty=qty+908;
+      end //
