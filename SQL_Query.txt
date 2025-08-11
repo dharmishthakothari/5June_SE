@@ -183,3 +183,65 @@ ________________________________________________________
      begin
       update customers set qty=qty+908;
       end //
+
+
+____________________________________________
+
+DELIMITER //
+create function sq_number(no1 int) 
+returns int
+NO SQL
+begin
+ declare num1 int;
+ set num1 = no1*no1;
+return num1;
+end//
+ 
+ 
+select sq_number(14) from dual;
+
+____________________________________________
+
+
+DELIMITER $$
+
+CREATE PROCEDURE ProcessEmployees()
+BEGIN
+    -- Declare variables to hold fetched data
+    DECLARE employee_id INT;
+    DECLARE employee_name VARCHAR(100);
+    DECLARE employee_salary DECIMAL(10, 2);
+    DECLARE done INT DEFAULT FALSE;
+
+    -- Declare the cursor
+    DECLARE employee_cursor CURSOR FOR
+        SELECT eid, ename, salary FROM employee;
+
+    -- Declare a continue handler for NOT FOUND to exit the loop
+    DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE;
+
+    -- Open the cursor
+    OPEN employee_cursor;
+
+    -- Loop through the result set
+    read_loop: LOOP
+        -- Fetch the next row into variables
+        FETCH employee_cursor INTO employee_id, employee_name, employee_salary;
+
+        -- Exit the loop if no more rows are found
+        IF done THEN
+            LEAVE read_loop;
+        END IF;
+
+        -- Perform operations on each row (e.g., update salary)
+        UPDATE employee
+        SET salary = employee_salary * 1.10 -- Increase salary by 10%
+        WHERE eid = employee_id;
+
+    END LOOP;
+
+    -- Close the cursor
+    CLOSE employee_cursor;
+
+END$$
+DELIMITER ;
